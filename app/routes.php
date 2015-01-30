@@ -26,3 +26,5 @@ Route::post('/handleRegistration', array('as' => 'newuser', 'uses' =>'UserContro
 Route::get('/submit', array('as' => 'submit', 'submit' =>'PostController@submit'));
 
 Route::get('/create', array('as' => 'create', 'uses' =>'SubredditController@create'));
+
+Route::get('/r/{subreddit}/{post}', array('as' => 'post', 'uses' =>'PostController@display'));
