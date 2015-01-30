@@ -12,6 +12,6 @@ class UserController extends BaseController{
 
     function login()
     {
-
+        return View::make('user.login');
     }
 }
