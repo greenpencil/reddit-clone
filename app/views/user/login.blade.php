@@ -3,6 +3,13 @@
 
 @section('content')
     <div class="col-lg-6">
+        @foreach ($errors->all() as $message)
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Error!</strong> {{ $message }}
+            </div>
+        @endforeach
+
         {{ Form::open(array('url' => 'handleRegistration', 'method' => 'post', 'class' => 'form-horizontal')) }}
         <fieldset>
             <legend>Register</legend>
@@ -40,6 +47,13 @@
     </div>
 
     <div class="col-lg-6">
+        @foreach ($errors->all() as $message)
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Error!</strong> {{ $message }}
+            </div>
+        @endforeach
+
         {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
             <fieldset>
                 <legend>Login</legend>

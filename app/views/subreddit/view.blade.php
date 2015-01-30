@@ -36,7 +36,7 @@
         </div>
     @else
         <div class="form-group">
-            <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
+            <a href="/submit" class="btn btn-primary btn-block">Submit a new link</a>
         </div>
     @endif
     <p>{{ $subreddit->sidebar }}</p>

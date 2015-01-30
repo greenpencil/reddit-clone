@@ -3,6 +3,7 @@ class Subreddit extends Eloquent{
 
 
     protected $table = 'subreddits';
+    protected $fillable = ['title','description','sidebar','created_by'];
 
     public function posts()
     {

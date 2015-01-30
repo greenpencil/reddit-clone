@@ -7,7 +7,8 @@ class UserController extends BaseController{
         $user = User::whereUsername($username)->first();
         $posts = User::whereUsername($username)->first()->posts;
         $comments = User::whereUsername($username)->first()->comments;
-        return View::make('user.profile', ['user' => $user,'posts' => $posts, 'comments' => $comments]);
+        $subreddits = User::whereUsername($username)->first()->subreddits;
+        return View::make('user.profile', ['user' => $user,'posts' => $posts, 'comments' => $comments, 'subreddits'=>$subreddits]);
     }
 
     function login()
