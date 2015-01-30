@@ -23,7 +23,9 @@ Route::get('/logout', array('as' => 'logout', 'uses' =>'UserController@logout'))
 
 Route::post('/handleRegistration', array('as' => 'newuser', 'uses' =>'UserController@handleRegistration'));
 
-Route::get('/submit', array('as' => 'submit', 'submit' =>'PostController@submit'));
+Route::get('/submit', array('as' => 'submit', 'uses' =>'PostController@submit'));
+
+Route::post('/handleNewPost', array('as' => 'newpost', 'uses' =>'PostController@handleNewPost'));
 
 Route::get('/create', array('as' => 'create', 'uses' =>'SubredditController@create'));
 
