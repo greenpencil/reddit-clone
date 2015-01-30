@@ -7,7 +7,6 @@
     <title>Reddit</title>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/reddit.css') }}
 </head>

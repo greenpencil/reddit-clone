@@ -16,7 +16,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="/login">Register or Login</a></li>
+                <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="/register">Register or Login</a></li>
             </ul>
         </div>
     </div>

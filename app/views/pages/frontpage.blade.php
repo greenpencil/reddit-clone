@@ -6,25 +6,13 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-body">
-            {{ Form::open(array('url' => 'processlogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
-            <fieldset>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        {{Form::text('username', null, array('placeholder' => 'Username', 'class'=> 'form-control'))}}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                </div>
-            </fieldset>
-            {{ Form::close() }}
+            <div class="form-group">
+                    {{Form::text('username', null, array('placeholder' => 'Username', 'class'=> 'form-control'))}}
+            </div>
+            <div class="form-group">
+                    {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
+             </div>
+                    <a href="#" class="btn btn-primary btn-block">Login</a>
         </div>
     </div>
     <div class="form-group">
