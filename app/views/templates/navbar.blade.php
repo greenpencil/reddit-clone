@@ -16,7 +16,11 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="/login">Register or Login</a></li>
+                @if(!Auth::check())
+                    <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="/login">Register or Login</a></li>
+                @else
+                    <li {{ (Request::is('/u/'.Auth::user()->username) ? 'class="active"' : '') }}><a href="/u/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
+                @endif
             </ul>
         </div>
     </div>

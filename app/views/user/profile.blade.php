@@ -4,6 +4,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <p><h3>{{ $user->username }}</h3></p>
+            <a href="/logout" class="btn btn-primary btn-block">Logout</a>
         </div>
     </div>
 @stop

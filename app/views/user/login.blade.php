@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="col-lg-6">
-        {{ Form::open(array('url' => 'create', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => 'handleRegistration', 'method' => 'post', 'class' => 'form-horizontal')) }}
         <fieldset>
             <legend>Register</legend>
             <div class="form-group">
@@ -19,9 +19,9 @@
                 </div>
             </div>
             <div class="form-group">
-                {{Form::label('password_confirm','Confirm', array('class' => 'col-lg-2 control-label') )}}
+                {{Form::label('password_confirmation','Confirm', array('class' => 'col-lg-2 control-label') )}}
                 <div class="col-lg-10">
-                    {{Form::password('password_confirm', array('placeholder' => 'Confirm Password', 'class'=> 'form-control'))}}
+                    {{Form::password('password_confirmation', array('placeholder' => 'Confirm Password', 'class'=> 'form-control'))}}
                 </div>
             </div>
             <div class="form-group">
@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-lg-6">
-        {{ Form::open(array('url' => 'processlogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
             <fieldset>
                 <legend>Login</legend>
                 <div class="form-group">

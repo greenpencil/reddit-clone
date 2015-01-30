@@ -4,34 +4,37 @@
     <div class="form-group">
             {{Form::text('search', null, array('placeholder' => 'Search','class'=> 'form-control'))}}
     </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            {{ Form::open(array('url' => 'processlogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
-            <fieldset>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        {{Form::text('username', null, array('placeholder' => 'Username', 'class'=> 'form-control'))}}
+    @if(!Auth::check())
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            {{Form::text('username', null, array('placeholder' => 'Username', 'class'=> 'form-control'))}}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-12">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-            {{ Form::close() }}
+                </fieldset>
+                {{ Form::close() }}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-    <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
-    </div>
-    <div class="form-group">
-    <a href="#" class="btn btn-primary btn-block">Create your own subreddit</a>
+    @else
+        <div class="form-group">
+        <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
+        </div>
+        <div class="form-group">
+        <a href="#" class="btn btn-primary btn-block">Create your own subreddit</a>
+     @endif
     </div>
 @stop
 

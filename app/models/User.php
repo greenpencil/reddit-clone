@@ -21,6 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
+	protected $fillable = ['username','password','email'];
 	protected $hidden = array('password', 'remember_token');
 
 	public function subreddits()
