@@ -2,7 +2,13 @@
 
 @section('sidebar')
     <div class="form-group">
-            {{Form::text('search', null, array('placeholder' => 'Search','class'=> 'form-control'))}}
+        {{Form::text('search', null, array('placeholder' => 'Search','class'=> 'form-control'))}}
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>{{ $subreddit->title }}</h3>
+            <p><b>{{ $subreddit->description }}</b></p>
+        </div>
     </div>
     @if(!Auth::check())
         <div class="panel panel-default">
@@ -30,12 +36,10 @@
         </div>
     @else
         <div class="form-group">
-        <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
+            <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
         </div>
-        <div class="form-group">
-        <a href="#" class="btn btn-primary btn-block">Create your own subreddit</a>
-     @endif
-    </div>
+    @endif
+    <p>{{ $subreddit->sidebar }}</p>
 @stop
 
 @section('content')
@@ -54,7 +58,7 @@
             </div>
             <div class="col-md-9">
                 <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
-                <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a> to <a href="/r/{{ $post->subreddit->title  }}">/r/{{ $post->subreddit->title  }}</a></p>
+                <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
                 <p class="options"><a href="">{{ $post->comments->count() }} comments</a></p>
             </div>
         </div>
