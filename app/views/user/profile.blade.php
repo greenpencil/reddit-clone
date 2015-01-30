@@ -4,7 +4,9 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <p><h3>{{ $user->username }}</h3></p>
-            <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+            @if(Auth::user()->username == $user->username)
+             <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+            @endif
         </div>
     </div>
 @stop
