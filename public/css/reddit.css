@@ -1,0 +1,83 @@
+.score {
+    text-align: center;
+    color: #c6c6c6;
+}
+
+.title {
+    font-size: medium;
+    font-weight: normal;
+    margin-bottom: 1px;
+}
+
+.post {
+    margin: 10px;
+    padding: 5px;
+}
+
+.spacer {
+    width: 2.2ex;
+}
+
+.rank {
+    float: left;
+    margin-top: 20px;
+    color: #c6c6c6;
+    font-family: arial;
+    font-size: x-large;
+    text-align: right;
+}
+
+.tagline {
+    color: #888;
+    font-size: x-small;
+    margin: 0 0 -4px;
+}
+
+.options a {
+    color: #888;
+    font-weight: bold;
+    padding: 0 1px;
+    font-size: x-small;
+}
+
+.post:nth-child(even) {
+    background: #F0F3FC;
+}
+.post:nth-child(odd) {
+    background: #FFF;
+}
+
+.arrow {
+    margin: 2px 0px 0px 0px;
+    width: 100%;
+    height: 14px;
+    display: block;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+}
+
+.arrow.down {
+    background-image: url('../images/reddit.png');
+    background-position: 0px -818px;
+    background-repeat: no-repeat;
+}
+.arrow.up {
+    background-image: url('../images/reddit.png');
+    background-position: -42px -818px;
+    background-repeat: no-repeat;
+}
+
+.vote
+{
+    padding-top: 8px;
+}
+
+.comment .title {
+    font-size: small;
+    margin-top: 10px;
+}
