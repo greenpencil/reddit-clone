@@ -30,3 +30,5 @@ Route::get('/create', array('as' => 'create', 'uses' =>'SubredditController@crea
 Route::get('/r/{subreddit}/{post}', array('as' => 'post', 'uses' =>'PostController@display'));
 
 Route::get('/r/{subredditname}', array('as' => 'post', 'uses' =>'SubredditController@view'));
+
+Route::post('/handleNewSubreddit', array('as' => 'newsubreddit', 'uses' =>'SubredditController@handleNewSubreddit'));

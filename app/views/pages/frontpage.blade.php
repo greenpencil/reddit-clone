@@ -30,10 +30,10 @@
         </div>
     @else
         <div class="form-group">
-        <a href="#" class="btn btn-primary btn-block">Submit a new link</a>
+        <a href="/submit" class="btn btn-primary btn-block">Submit a new link</a>
         </div>
         <div class="form-group">
-        <a href="#" class="btn btn-primary btn-block">Create your own subreddit</a>
+        <a href="/create" class="btn btn-primary btn-block">Create your own subreddit</a>
      @endif
     </div>
 @stop
