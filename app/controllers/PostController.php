@@ -3,7 +3,8 @@
 class PostController extends BaseController{
     function submit()
     {
-        return View::make('post.submit');
+        $subreddits = Subreddit::All()->random(5);
+        return View::make('post.submit',['subreddits' => $subreddits]);
     }
 
     function handleNewPost()
@@ -33,6 +34,28 @@ class PostController extends BaseController{
     {
         $post = Post::whereid($post)->first();
         $subreddit = Subreddit::whereTitle($subreddit)->first();
-        return View::make('post.view',['post' => $post,'subreddit' => $subreddit]);
+        $comments = $post->comments;
+        return View::make('post.view',['post' => $post,'subreddit' => $subreddit,'comments' => $comments]);
+    }
+
+    function handleComments()
+    {
+        $post_id = Input::get('post_id');
+        $subreddit = Post::whereid($post_id)->first()->subreddit;
+        $data = Input::only(['comment','post_id']);
+        $data['user_id'] = Auth::user()->id;
+        $validator = Validator::make(
+            $data,
+            [
+                'comment' => 'required|min:3',
+            ]
+        );
+        if($validator->fails()){
+            return Redirect::to('/r/'.$subreddit->title.'/'.$post_id)->withErrors($validator)->withInput();
+        }
+        $newComment = Comment::create($data);
+        if($newComment){
+            return Redirect::to('/r/'.$subreddit->title.'/'.$post_id);
+        }
     }
 }

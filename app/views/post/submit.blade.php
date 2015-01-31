@@ -30,6 +30,15 @@
                 {{Form::text('subreddit', null, array('placeholder' => 'Subreddit', 'class'=> 'form-control'))}}
             </div>
         </div>
+        <div class="suggestions">
+            {{Form::label(null,'Suggestions', array('class' => 'col-lg-2 control-label') )}}
+        <ul>
+            <div class="col-lg-10">
+            @foreach($subreddits as $subreddit)
+                <li><a href="" onclick="document.getElementById('subreddit').value='{{$subreddit->title}}';">{{$subreddit->title}}</a>&nbsp;&nbsp;</li>
+            @endforeach
+            </div>
+        </ul>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
                 <button type="submit" class="btn btn-primary">Submit Post</button>

@@ -43,23 +43,48 @@
 @stop
 
 @section('content')
-    @foreach($posts as $post)
-        <div class="row post">
-            <div class="col-md-1 rank">
-                {{ $post->id }}
+    <div class="row post even">
+        <div class="col-md-1">
+            <div class="arrow up"></div>
+            <div class="score">{{ $post->karma }}</div>
+            <div class="arrow down"></div>
+        </div>
+        <div class="col-md-11 post-title">
+            <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
+            <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        {{ Form::open(array('url' => 'handleComments', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        <div class="form-group">
+            <div class="col-lg-offset-1 col-lg-10">
+                {{Form::textarea('comment', null, array('placeholder' => 'Comment...', 'rows'=>'3', 'class'=> 'form-control'))}}
             </div>
-            <div class="col-md-1 vote">
+        </div>
+        {{Form::hidden('post_id', $post->id)}}
+        <div class="col-lg-10 col-lg-offset-1">
+            <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </div>
+        {{ Form::close() }}
+    </div>
+
+    @foreach($comments as $comment)
+        <div class="row post">
+            <div class="col-md-1">
                 <div class="arrow up"></div>
-                <div class="score">{{ $post->karma }}</div>
                 <div class="arrow down"></div>
             </div>
-            <div class="col-md-1">
-                {{ HTML::image('images/default.jpg','default',array('width'=>'70','height'=>'70')) }}
-            </div>
-            <div class="col-md-9">
-                <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
-                <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
-                <p class="options"><a href="">{{ $post->comments->count() }} comments</a></p>
+            <div class="col-md-11">
+                <p class="tagline"><a href="/u/{{ $comment->user->username }}">{{ $comment->user->username }}</a> {{ $comment->karma }} points 2 hours ago </p>
+                <p>{{ $comment->comment }}</p>
+                @if(Auth::check())
+                    @if(Auth::user()->username == $comment->user->username)
+                            <p class="options"><a href="/commentreply">Reply</a> <a href="/commentedit">Edit</a></p>
+                    @else
+                        <p class="options"><a href="/commentreply">Reply</a></p>
+                    @endif
+                @endif
             </div>
         </div>
     @endforeach

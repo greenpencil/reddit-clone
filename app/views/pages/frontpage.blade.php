@@ -52,10 +52,10 @@
             <div class="col-md-1">
                 {{ HTML::image('images/default.jpg','default',array('width'=>'70','height'=>'70')) }}
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 post-title">
                 <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
                 <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a> to <a href="/r/{{ $post->subreddit->title  }}">/r/{{ $post->subreddit->title  }}</a></p>
-                <p class="options"><a href="">{{ $post->comments->count() }} comments</a></p>
+                <p class="options"><a href="/r/{{ $post->subreddit->title  }}/{{ $post->id  }}">{{ $post->comments->count() }} comments</a></p>
             </div>
         </div>
     @endforeach
