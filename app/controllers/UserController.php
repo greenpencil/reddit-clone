@@ -59,7 +59,7 @@ class UserController extends BaseController{
             ]
         );
         if($validator->fails()){
-            return Redirect::route('register')->withErrors($validator)->withInput();
+            return Redirect::route('login')->withErrors($validator)->withInput();
         }
 
         $newUser = User::create($data);
