@@ -13,7 +13,7 @@
     @if(!Auth::check())
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                {{ Form::open(array('url' => '/login/process', 'method' => 'post', 'class' => 'form-horizontal')) }}
                 <fieldset>
                     <div class="form-group">
                         <div class="col-lg-12">
@@ -56,7 +56,7 @@
     </div>
 
     <div class="row">
-        {{ Form::open(array('url' => 'handleComments', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => '/comment/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-10">
                 {{Form::textarea('comment', null, array('placeholder' => 'Comment...', 'rows'=>'3', 'class'=> 'form-control'))}}

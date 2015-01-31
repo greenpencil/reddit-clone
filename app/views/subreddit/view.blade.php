@@ -13,7 +13,7 @@
     @if(!Auth::check())
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                {{ Form::open(array('url' => '/login/process', 'method' => 'post', 'class' => 'form-horizontal')) }}
                 <fieldset>
                     <div class="form-group">
                         <div class="col-lg-12">

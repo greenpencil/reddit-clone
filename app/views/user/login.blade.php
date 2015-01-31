@@ -10,7 +10,7 @@
             </div>
         @endforeach
 
-        {{ Form::open(array('url' => 'handleRegistration', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => '/login/register', 'method' => 'post', 'class' => 'form-horizontal')) }}
         <fieldset>
             <legend>Register</legend>
             <div class="form-group">
@@ -54,7 +54,7 @@
             </div>
         @endforeach
 
-        {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => '/login/process', 'method' => 'post', 'class' => 'form-horizontal')) }}
             <fieldset>
                 <legend>Login</legend>
                 <div class="form-group">

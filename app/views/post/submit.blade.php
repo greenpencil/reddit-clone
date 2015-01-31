@@ -9,7 +9,7 @@
         </div>
     @endforeach
 
-    {{ Form::open(array('url' => 'handleNewPost', 'method' => 'post', 'class' => 'form-horizontal')) }}
+    {{ Form::open(array('url' => '/post/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
     <fieldset>
         <legend>Submit Link</legend>
         <div class="form-group">

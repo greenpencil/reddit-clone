@@ -12,7 +12,7 @@
         </div>
     @endforeach
 
-    {{ Form::open(array('url' => 'handleNewSubreddit', 'method' => 'post', 'class' => 'form-horizontal')) }}
+    {{ Form::open(array('url' => '/subreddit/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
     <fieldset>
         <legend>Create Subreddit</legend>
         <div class="form-group">
