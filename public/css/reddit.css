@@ -81,3 +81,24 @@
     font-size: small;
     margin-top: 10px;
 }
+
+.suggestions ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.suggestions .col-lg-10 {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.suggestions ul li
+{
+    display: inline;
+}
+
+.post-title
+{
+    padding-left: 2em;
+}

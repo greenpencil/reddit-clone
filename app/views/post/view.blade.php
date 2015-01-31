@@ -49,7 +49,8 @@
             <div class="score">{{ $post->karma }}</div>
             <div class="arrow down"></div>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-11 post-title">
+        <div class="col-md-11 post-title">
             <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
             <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
         </div>
@@ -62,6 +63,7 @@
                 {{Form::textarea('comment', null, array('placeholder' => 'Comment...', 'rows'=>'3', 'class'=> 'form-control'))}}
             </div>
         </div>
+        {{Form::hidden('post_id', $post->id)}}
         <div class="col-lg-10 col-lg-offset-1">
             <button type="submit" class="btn btn-primary">Submit Comment</button>
         </div>
@@ -77,6 +79,13 @@
             <div class="col-md-11">
                 <p class="tagline"><a href="/u/{{ $comment->user->username }}">{{ $comment->user->username }}</a> {{ $comment->karma }} points 2 hours ago </p>
                 <p>{{ $comment->comment }}</p>
+                @if(Auth::check())
+                    @if(Auth::user()->username == $comment->user->username)
+                            <p class="options"><a href="/commentreply">Reply</a> <a href="/commentedit">Edit</a></p>
+                    @else
+                        <p class="options"><a href="/commentreply">Reply</a></p>
+                    @endif
+                @endif
             </div>
         </div>
     @endforeach

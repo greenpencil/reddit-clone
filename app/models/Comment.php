@@ -3,6 +3,7 @@ class Comment extends Eloquent{
 
 
     protected $table = 'comments';
+    protected $fillable = ['user_id','comment','post_id','karma',];
 
     public function post()
     {
