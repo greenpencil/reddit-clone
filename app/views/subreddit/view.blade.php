@@ -6,7 +6,7 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-body">
-            <h3>{{ $subreddit->title }}</h3>
+            <h3><a href="/r/{{ $subreddit->title }}">{{ $subreddit->title }}</a></h3>
             <p><b>{{ $subreddit->description }}</b></p>
         </div>
     </div>

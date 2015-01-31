@@ -6,7 +6,7 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-body">
-            <h3>{{ $subreddit->title }}</h3>
+            <h3><a href="/r/{{ $subreddit->title }}">{{ $subreddit->title }}</a></h3>
             <p><b>{{ $subreddit->description }}</b></p>
         </div>
     </div>
@@ -43,13 +43,12 @@
 @stop
 
 @section('content')
-    <div class="row post">
-        <div class="col-md-1 vote">
+    <div class="row post even">
+        <div class="col-md-1">
             <div class="arrow up"></div>
             <div class="score">{{ $post->karma }}</div>
             <div class="arrow down"></div>
         </div>
-        <div class="col-md-11 post-title">
         <div class="col-md-11 post-title">
             <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
             <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
@@ -72,7 +71,7 @@
 
     @foreach($comments as $comment)
         <div class="row post">
-            <div class="col-md-1 vote">
+            <div class="col-md-1">
                 <div class="arrow up"></div>
                 <div class="arrow down"></div>
             </div>
