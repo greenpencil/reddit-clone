@@ -35,7 +35,7 @@
         <ul>
             <div class="col-lg-10">
             @foreach($subreddits as $subreddit)
-                <li><a href="" onclick="document.getElementById('subreddit').value='{{$subreddit->title}}';">{{$subreddit->title}}</a>&nbsp;&nbsp;</li>
+                <li><a href="javascript:;" onclick="document.getElementById('subreddit').value='{{$subreddit->title}}';">{{$subreddit->title}}</a>&nbsp;&nbsp;</li>
             @endforeach
             </div>
         </ul>
