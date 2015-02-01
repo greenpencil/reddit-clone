@@ -4,8 +4,18 @@ class SubredditController extends BaseController{
     function view($subredditname)
     {
         $subreddit = Subreddit::whereTitle($subredditname)->first();
-        $posts = Subreddit::whereTitle($subredditname)->first()->posts;
-        return View::make('subreddit.view',['subreddit' => $subreddit,'posts' => $posts]);
+        $posts = $subreddit->posts;
+        $subscribers = $subreddit->subscribers;
+        $subscribed = false;
+        foreach($subscribers as $subscriber)
+        {
+            if($subscriber->username == Auth::user()->username)
+            {
+                $subscribed = true;
+                break;
+            }
+        }
+        return View::make('subreddit.view',['subreddit' => $subreddit,'posts' => $posts, 'subscribers' => $subscribers , 'subscribed' => $subscribed]);
     }
 
     function create()
@@ -32,5 +42,23 @@ class SubredditController extends BaseController{
         if($newSubreddit){
             return Redirect::to('/r/'.$data['title']);
         }
+    }
+
+    function subscribe($subreddit)
+    {
+        $user = User::whereUsername(Auth::user()->username)->first();
+        $sredit = Subreddit::whereTitle($subreddit)->first();
+        $user->subscriptions()->sync([$sredit->id],false);
+
+        return Redirect::to('/r/'.$subreddit);
+    }
+
+    function unsubscribe($subreddit)
+    {
+        $user = User::whereUsername(Auth::user()->username)->first();
+        $sredit = Subreddit::whereTitle($subreddit)->first();
+        $user->subscriptions()->detach([$sredit->id]);
+
+        return Redirect::to('/r/'.$subreddit);
     }
 }

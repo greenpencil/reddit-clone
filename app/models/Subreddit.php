@@ -15,8 +15,8 @@ class Subreddit extends Eloquent{
         return $this->belongsTo('User');
     }
 
-    public function users()
+    public function subscribers()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('User','subscriptions');
     }
 }

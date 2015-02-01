@@ -6,7 +6,7 @@
             <p><h3>{{ $user->username }}</h3></p>
             @if(Auth::check())
                 @if(Auth::user()->username == $user->username)
-                 <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+                 <a href="/logout" class="btn btn-danger btn-block">Logout</a>
                 @endif
             @endif
             <br/>
@@ -18,6 +18,15 @@
             </ul>
         </div>
      </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p><h4>My Subscriptions</h4></p>
+            @foreach($subscriptions as $subscription)
+                <li><a href="/r/{{ $subscription->title }}">/r/{{ $subscription->title }}</a></li>
+            @endforeach
+        </div>
+    </div>
 @stop
 
 @section('content')

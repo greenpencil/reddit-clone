@@ -7,13 +7,23 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <h3><a href="/r/{{ $subreddit->title }}">{{ $subreddit->title }}</a></h3>
+            <p>Subscribers: {{ $subscribers->count() }}</p>
             <p><b>{{ $subreddit->description }}</b></p>
+            @if($subscribed)
+                {{ Form::open(array('url' => 'r/'.$subreddit->title.'/unsubscribe', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                <button type="submit" class="btn btn-danger btn-block">Unsubscribe</button>
+                {{ Form::close() }}
+            @else
+                {{ Form::open(array('url' => 'r/'.$subreddit->title.'/subscribe', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                {{ Form::close() }}
+            @endif
         </div>
     </div>
     @if(!Auth::check())
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ Form::open(array('url' => 'handleLogin', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                {{ Form::open(array('url' => '/login/process', 'method' => 'post', 'class' => 'form-horizontal')) }}
                 <fieldset>
                     <div class="form-group">
                         <div class="col-lg-12">
