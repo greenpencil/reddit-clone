@@ -36,3 +36,8 @@ Route::get('/r/{subredditname}', array('as' => 'post', 'uses' =>'SubredditContro
 Route::post('/subreddit/new', array('as' => 'newsubreddit', 'uses' =>'SubredditController@handleNewSubreddit'));
 
 Route::post('/comment/new', array('as' => 'newsubreddit', 'uses' =>'PostController@handleComments'));
+
+Route::post('/r/{subreddit}/subscribe', array('as' => 'subscribe', 'uses' =>'SubredditController@subscribe'));
+
+Route::post('/r/{subreddit}/unsubscribe', array('as' => 'unsubscribe', 'uses' =>'SubredditController@unsubscribe'));
+

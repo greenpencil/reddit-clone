@@ -5,10 +5,11 @@ class UserController extends BaseController{
     function profile($username)
     {
         $user = User::whereUsername($username)->first();
-        $posts = User::whereUsername($username)->first()->posts;
-        $comments = User::whereUsername($username)->first()->comments;
-        $subreddits = User::whereUsername($username)->first()->subreddits;
-        return View::make('user.profile', ['user' => $user,'posts' => $posts, 'comments' => $comments, 'subreddits'=>$subreddits]);
+        $posts = $user->posts;
+        $comments = $user->comments;
+        $subreddits = $user->subreddits;
+        $subscriptions = $user->subscriptions;
+        return View::make('user.profile', ['user' => $user,'posts' => $posts, 'comments' => $comments, 'subreddits'=>$subreddits, 'subscriptions'=>$subscriptions]);
     }
 
     function login()
@@ -59,7 +60,7 @@ class UserController extends BaseController{
             ]
         );
         if($validator->fails()){
-            return Redirect::route('login')->withErrors($validator)->withInput();
+            return Redirect::route('register')->withErrors($validator)->withInput();
         }
 
         $newUser = User::create($data);
