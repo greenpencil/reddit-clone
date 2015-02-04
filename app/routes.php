@@ -13,6 +13,8 @@
 
 Route::get('/',  array('as' => 'frontpage', 'uses' =>'PageController@frontpage'));
 
+Route::get('/r/all',  array('as' => 'all', 'uses' =>'PageController@all'));
+
 Route::get('/u/{username}',  array('as' => 'profile', 'uses' =>'UserController@profile'));
 
 Route::get('/login', array('as' => 'login', 'uses' =>'UserController@login'));

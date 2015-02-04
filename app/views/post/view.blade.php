@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-11 post-title">
             <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
-            <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
+            <p class="tagline">submitted {{ $post->created_at->diffForHumans(); }} by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
         </div>
     </div>
 
@@ -76,7 +76,7 @@
                 <div class="arrow down"></div>
             </div>
             <div class="col-md-11">
-                <p class="tagline"><a href="/u/{{ $comment->user->username }}">{{ $comment->user->username }}</a> {{ $comment->karma }} points 2 hours ago </p>
+                <p class="tagline"><a href="/u/{{ $comment->user->username }}">{{ $comment->user->username }}</a> {{ $comment->karma }} points {{ $comment->created_at->diffForHumans(); }} </p>
                 <p>{{ $comment->comment }}</p>
                 @if(Auth::check())
                     @if(Auth::user()->username == $comment->user->username)

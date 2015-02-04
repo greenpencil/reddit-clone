@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-10 post-title">
                         <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
-                        <p class="tagline">submitted 2 hours ago by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a> to <a href="/r/{{ $post->subreddit->title  }}">/r/{{ $post->subreddit->title  }}</a></p>
+                        <p class="tagline">submitted {{ $post->created_at->diffForHumans(); }} by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a> to <a href="/r/{{ $post->subreddit->title  }}">/r/{{ $post->subreddit->title  }}</a></p>
                         <p class="options"><a href="/r/{{ $post->subreddit->title  }}/{{ $post->id  }}">{{ $post->comments->count() }} comments</a></p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-md-11">
                         <span class="title"><a href="{{ $post->url }}">{{ $comment->post->title }}</a> by  <a href="/u/{{ $comment->post->user->username }}">{{ $comment->post->user->username }}</a> in <a href="/r/{{ $comment->post->subreddit->title }}">/r/{{ $comment->post->subreddit->title }}</a></span>
-                        <p class="tagline"><b>{{ $comment->karma }}</b> points 2 hours ago</p>
+                        <p class="tagline"><b>{{ $comment->karma }}</b> points {{ $comment->created_at->diffForHumans(); }}</p>
                         <p>{{ $comment->comment }}</p>
                         <p class="options"><a href="">Full Comments({{ $comment->post->comments->count() }})</a></p>
                     </div>
