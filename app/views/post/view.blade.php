@@ -50,7 +50,12 @@
             <div class="arrow down"></div>
         </div>
         <div class="col-md-11 post-title">
-            <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
+            @if($post->type == "0")
+                <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
+            @else
+                <a href="/r/{{ $post->subreddit->title  }}/{{ $post->rand  }}" class="title">{{ $post->title }}</a>
+                <div class="text-post">{{$post->text}}</div>
+            @endif
             <p class="tagline">submitted {{ $post->created_at->diffForHumans(); }} by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
         </div>
     </div>
