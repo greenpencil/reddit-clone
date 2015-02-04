@@ -48,9 +48,13 @@
                         {{ HTML::image('images/default.jpg','default',array('width'=>'70','height'=>'70')) }}
                     </div>
                     <div class="col-md-10 post-title">
-                        <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
+                        @if($post->type == "0")
+                            <a href="{{ $post->url }}" class="title">{{ $post->title }}</a>
+                        @else
+                            <a href="/r/{{ $post->subreddit->title  }}/{{ $post->rand  }}" class="title">{{ $post->title }}</a>
+                        @endif
                         <p class="tagline">submitted {{ $post->created_at->diffForHumans(); }} by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a> to <a href="/r/{{ $post->subreddit->title  }}">/r/{{ $post->subreddit->title  }}</a></p>
-                        <p class="options"><a href="/r/{{ $post->subreddit->title  }}/{{ $post->id  }}">{{ $post->comments->count() }} comments</a></p>
+                        <p class="options"><a href="/r/{{ $post->subreddit->title  }}/{{ $post->rand  }}">{{ $post->comments->count() }} comments</a></p>
                     </div>
                 </div>
             @endforeach

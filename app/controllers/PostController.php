@@ -9,18 +9,32 @@ class PostController extends BaseController{
 
     function handleNewPost()
     {
-        $subreddit = Input::get('subreddit');
-        $data = Input::only(['title','url']);
+        if(Input::get('type') == '0') {
+            $subreddit = Input::get('subreddit');
+            $data = Input::only(['title', 'url','type']);
+            $validator = Validator::make(
+                $data,
+                [
+                    'title' => 'required|min:3',
+                    'url' => 'required|max:30',
+                ]
+            );
+        }
+        else{
+            $subreddit = Input::get('subreddit1');
+            $data = Input::only(['title','text','type']);
+            $validator = Validator::make(
+                $data,
+                [
+                    'title' => 'required|min:3',
+                    'text' => 'required|min:3',
+                ]
+            );
+        }
         $data['subreddit_id'] = Subreddit::whereTitle($subreddit)->first()->id;
         $data['user_id'] = Auth::user()->id;
         $data['image'] = 'default';
-        $validator = Validator::make(
-            $data,
-            [
-                'title' => 'required|min:3',
-                'url' => 'required|min:3',
-            ]
-        );
+        $data['rand'] = str_random(5);
         if($validator->fails()){
             return Redirect::route('submit')->withErrors($validator)->withInput();
         }
@@ -32,7 +46,7 @@ class PostController extends BaseController{
 
     function display($subreddit,$post)
     {
-        $post = Post::whereid($post)->first();
+        $post = Post::whereRand($post)->first();
         $subreddit = Subreddit::whereTitle($subreddit)->first();
         $comments = $post->comments;
         return View::make('post.view',['post' => $post,'subreddit' => $subreddit,'comments' => $comments]);
