@@ -40,13 +40,13 @@ class PostController extends BaseController{
         }
         $newPost = Post::create($data);
         if($newPost){
-            return Redirect::to('/r/'.$subreddit.'/'.$newPost->id);
+            return Redirect::to('/r/'.$subreddit.'/'.$newPost->rand);
         }
     }
 
     function display($subreddit,$post)
     {
-        $post = Post::whereRand($post)->first();
+        $post = Post::whererand($post)->first();
         $subreddit = Subreddit::whereTitle($subreddit)->first();
         $comments = $post->comments;
         return View::make('post.view',['post' => $post,'subreddit' => $subreddit,'comments' => $comments]);
@@ -55,7 +55,9 @@ class PostController extends BaseController{
     function handleComments()
     {
         $post_id = Input::get('post_id');
-        $subreddit = Post::whereid($post_id)->first()->subreddit;
+        $post = Post::whereid($post_id)->first();
+        $subreddit = $post->subreddit;
+        $rand = $post->rand;
         $data = Input::only(['comment','post_id']);
         $data['user_id'] = Auth::user()->id;
         $validator = Validator::make(
@@ -65,11 +67,11 @@ class PostController extends BaseController{
             ]
         );
         if($validator->fails()){
-            return Redirect::to('/r/'.$subreddit->title.'/'.$post_id)->withErrors($validator)->withInput();
+            return Redirect::to('/r/'.$subreddit->title.'/'.$rand)->withErrors($validator)->withInput();
         }
         $newComment = Comment::create($data);
         if($newComment){
-            return Redirect::to('/r/'.$subreddit->title.'/'.$post_id);
+            return Redirect::to('/r/'.$subreddit->title.'/'.$rand);
         }
     }
 }

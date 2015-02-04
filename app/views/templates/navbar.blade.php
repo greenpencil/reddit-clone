@@ -11,7 +11,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                     <li {{ (Request::is('/') ? 'class="active"' : '') }}><a href="/">Frontpage</a></li>
-                    <li {{ (Request::is('r/all') ? 'class="active"' : '') }}><a href="r/all">All</a></li>
+                    <li {{ (Request::is('r/all') ? 'class="active"' : '') }}><a href="/r/all">All</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
