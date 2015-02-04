@@ -59,7 +59,7 @@
             <p class="tagline">submitted {{ $post->created_at->diffForHumans(); }} by <a href="/u/{{ $post->user->username  }}">{{ $post->user->username  }}</a></p>
         </div>
     </div>
-
+    @if(Auth::check())
     <div class="row">
         {{ Form::open(array('url' => '/comment/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
         <div class="form-group">
@@ -73,6 +73,7 @@
         </div>
         {{ Form::close() }}
     </div>
+    @endif
 
     @foreach($comments as $comment)
         <div class="row post">
