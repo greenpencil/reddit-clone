@@ -22,4 +22,10 @@ class PageController extends BaseController{
         return View::make('pages.frontpage', ['posts' => $posts]);
     }
 
+    function search($terms)
+    {
+        $posts = Post::all();
+        return View::make('pages.frontpage', ['posts' => $posts]);
+    }
+
 }
