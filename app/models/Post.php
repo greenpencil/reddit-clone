@@ -1,7 +1,9 @@
 <?php
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 class Post extends Eloquent{
 
-
+    use SearchableTrait;
     protected $table = 'posts';
     protected $fillable = ['title','image','url','subreddit_id','user_id','type','text'];
 
@@ -19,4 +21,10 @@ class Post extends Eloquent{
     {
         return $this->hasMany('Comment');
     }
+
+    protected $searchable = [
+        'columns' => [
+            'title' => 10,
+        ]
+    ];
 }

@@ -33,11 +33,13 @@ Route::get('/create', array('as' => 'create', 'uses' =>'SubredditController@crea
 
 Route::get('/r/{subreddit}/{post}', array('as' => 'post', 'uses' =>'PostController@display'));
 
-Route::get('/r/{subredditname}', array('as' => 'post', 'uses' =>'SubredditController@view'));
+Route::get('/r/{subredditname}', array('as' => 'subreddit', 'uses' =>'SubredditController@view'));
+
+Route::get('/search?q={terms}', array('as' => 'search', 'uses' =>'PageController@search'));
 
 Route::post('/subreddit/new', array('as' => 'newsubreddit', 'uses' =>'SubredditController@handleNewSubreddit'));
 
-Route::post('/comment/new', array('as' => 'newsubreddit', 'uses' =>'PostController@handleComments'));
+Route::post('/comment/new', array('as' => 'newcomment', 'uses' =>'PostController@handleComments'));
 
 Route::post('/r/{subreddit}/subscribe', array('as' => 'subscribe', 'uses' =>'SubredditController@subscribe'));
 

@@ -1,9 +1,13 @@
 @extends('templates.default')
 
 @section('sidebar')
+    {{ Form::open(array('url' => '/search/', 'method' => 'get', 'class' => 'form-horizontal')) }}
     <div class="form-group">
-        {{Form::text('search', null, array('placeholder' => 'Search','class'=> 'form-control'))}}
+        <div class="col-lg-9">
+             {{Form::text('q', null, array('placeholder' => 'Search','class'=> 'form-control'))}}
+        </div>
     </div>
+    {{Form::close()}}
     <div class="panel panel-default">
         <div class="panel-body">
             <h3><a href="/r/{{ $subreddit->title }}">{{ $subreddit->title }}</a></h3>
