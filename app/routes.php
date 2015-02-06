@@ -35,7 +35,7 @@ Route::get('/r/{subreddit}/{post}', array('as' => 'post', 'uses' =>'PostControll
 
 Route::get('/r/{subredditname}', array('as' => 'subreddit', 'uses' =>'SubredditController@view'));
 
-Route::get('/search/{terms}', array('as' => 'search', 'uses' =>'PageController@search'));
+Route::get('/search?q={terms}', array('as' => 'search', 'uses' =>'PageController@search'));
 
 Route::post('/subreddit/new', array('as' => 'newsubreddit', 'uses' =>'SubredditController@handleNewSubreddit'));
 

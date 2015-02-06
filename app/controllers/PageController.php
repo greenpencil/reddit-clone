@@ -24,7 +24,7 @@ class PageController extends BaseController{
 
     function search($terms)
     {
-        $posts = Post::all();
+        $posts = Post::search($terms)->get();
         return View::make('pages.frontpage', ['posts' => $posts]);
     }
 
